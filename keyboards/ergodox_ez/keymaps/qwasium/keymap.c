@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  | MENU |           | NumLk|  F7  |  F8  |  F9  |  F10 |  F11 |  F12   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Esc    |  na  |  na  |  na  |  na  |  na  |Browse|           | Copy |LWheel|DWheel|UWheel|RWheel|  na  |  BkSp  |
+ * | Esc    |  na  |  na  |  na  |  na  |  na  |Browse|           | Copy |LWheel|UWheel|DWheel|RWheel|  na  |  BkSp  |
  * |--------+------+------+------+------+------| Fwrd |           |      |------+------+------+------+------+--------|
  * | Tab    |  na  |PrtScr|ScrLk |Pause |  na  |------|           |------|LMouse|DMouse|UMouse|RMouse|  na  |  Enter |
  * |--------+------+------+------+------+------|Browse|           | Paste|------+------+------+------+------+--------|
@@ -154,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAYER_MOUS] = LAYOUT_ergodox_pretty(
   // left hand                                                              right hand
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6, KC_APP,               KC_NUM,  KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, KC_F12,
-  KC_ESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_WFWD,              KC_COPY, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NO,  KC_BSPC,
+  KC_ESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_WFWD,              KC_COPY, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R, KC_NO,  KC_BSPC,
   KC_TAB,  KC_NO,   KC_PSCR, KC_SCRL, KC_PAUS, KC_NO,                                KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO,  KC_ENT,
   KC_LSFT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_WBAK,              KC_PSTE, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_RSFT,
   KC_LCTL, KC_LGUI, KC_LALT, MO(2),   MO(1),                                                  MO(1),   MO(2),   KC_RALT, KC_LGUI, KC_RCTL,
