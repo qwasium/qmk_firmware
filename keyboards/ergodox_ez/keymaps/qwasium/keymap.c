@@ -181,7 +181,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             // Switch keyboard with super+space and then set to kana
             // Tapping kana is affected in JP Keyboard input, ignored in other languages
             case MACRO_SWTCH_KB:
-                SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_SPC) SS_UP(X_LGUI) SS_UP(X_SPC) SS_TAP(X_INT2));
+                SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_SPC) SS_UP(X_LGUI) SS_UP(X_SPC) SS_TAP(X_INT2) SS_TAP(X_INT2));
                 break;
 
             // MACRO 1
