@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  | MENU |           | NumLk|  F7  |  F8  |  F9  |  F10 |  F11 |  F12   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Esc    |  na  |  M2  | End  |  na  |  na  |  M0  |           |  M0  | Home | PgDn | PgUp |  na  |   -  |  BkSp  |
+ * | Esc    |  na  |  M2  |  na  | End  |  na  |  M0  |           |  M0  | Home | PgDn | PgUp |  na  |   -  |  BkSp  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Tab    |   1  |   2  |   3  |   4  |   5  |------|           |------| Left | Down |  Up  | Right|   +  |  Enter |
  * |--------+------+------+------+------+------| BkSp |           | Del  |------+------+------+------+------+--------|
@@ -120,14 +120,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LAYER_NUM] = LAYOUT_ergodox_pretty(
   // left hand                                                                              right hand
-  KC_F1,   KC_F2,   KC_F3,           KC_F4,  KC_F5,  KC_F6,           KC_APP,               KC_NUM,         KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  KC_ESC,  KC_NO,   MACRO_WORD_FRWD, KC_END, KC_NO,  KC_NO,           MACRO_SWTCH_KB,       MACRO_SWTCH_KB, KC_HOME, KC_PGDN, KC_PGUP, KC_NO,   KC_MINS, KC_BSPC,
-  KC_TAB,  KC_1,    KC_2,            KC_3,   KC_4,   KC_5,                                                  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PLUS, KC_ENT,
-  KC_LSFT, KC_6,    KC_7,            KC_8,   KC_9,   MACRO_WORD_BACK, KC_BSPC,              KC_DEL,         KC_NO,   KC_0,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-  KC_LCTL, KC_LGUI, KC_LALT,         MO(2),  MO(1),                                                         MO(1),   MO(2),   KC_RALT, KC_LGUI, KC_RCTL,
-                                                     KC_MPLY,         KC_BRIU,              KC_VOLU,        KC_MUTE,
-                                                                      KC_BRID,              KC_VOLD,
-                                             KC_SPC, MO(2),           MO(3),                MO(3),          MO(2),    KC_SPC
+  KC_F1,   KC_F2,   KC_F3,           KC_F4, KC_F5,  KC_F6,           KC_APP,               KC_NUM,         KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+  KC_ESC,  KC_NO,   MACRO_WORD_FRWD, KC_NO, KC_END, KC_NO,           MACRO_SWTCH_KB,       MACRO_SWTCH_KB, KC_HOME, KC_PGDN, KC_PGUP, KC_NO,   KC_MINS, KC_BSPC,
+  KC_TAB,  KC_1,    KC_2,            KC_3,  KC_4,   KC_5,                                                  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PLUS, KC_ENT,
+  KC_LSFT, KC_6,    KC_7,            KC_8,  KC_9,   MACRO_WORD_BACK, KC_BSPC,              KC_DEL,         KC_NO,   KC_0,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
+  KC_LCTL, KC_LGUI, KC_LALT,         MO(2), MO(1),                                                         MO(1),   MO(2),   KC_RALT, KC_LGUI, KC_RCTL,
+                                                    KC_MPLY,         KC_BRIU,              KC_VOLU,        KC_MUTE,
+                                                                     KC_BRID,              KC_VOLD,
+                                            KC_SPC, MO(2),           MO(3),                MO(3),          MO(2),   KC_SPC
 ), // LAYER_NUM end ------------------------------------------------------------------------------------------------ *
 
 /* [3] LAYER_MOUS: Mouse and Less Used Keys Layer ------------------------------------------------------------------ *
