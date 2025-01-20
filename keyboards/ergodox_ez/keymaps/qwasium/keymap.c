@@ -31,6 +31,8 @@ enum custom_keycodes {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+/* #################################################### US ######################################################## */
+
 /* [0] LAYER_BASE: Basic layer ------------------------------------------------------------------------------------- *
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -56,7 +58,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand                                                             right hand
   KC_F1,   KC_F2,   KC_F3,   KC_F4, KC_F5,  KC_F6,   KC_APP,               KC_NUM,         KC_F7,   KC_F8, KC_F9,   KC_F10,  KC_F11,  KC_F12,
   KC_ESC,  KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,    MACRO_SWTCH_KB,       MACRO_SWTCH_KB, KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,
-  KC_TAB,  MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_D), MT(MOD_LSFT, KC_F),   KC_G, KC_H,    MT(MOD_LSFT, KC_J), MT(MOD_LALT, KC_K), MT(MOD_LGUI, KC_L), MT(MOD_LCTL, KC_SCLN), KC_ENT,
+
+  // left hand home row
+  KC_TAB,  MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_D), MT(MOD_LSFT, KC_F),   KC_G,
+
+                                            // right hand home row
+                                            KC_H,    MT(MOD_LSFT, KC_J), MT(MOD_LALT, KC_K), MT(MOD_LGUI, KC_L), MT(MOD_LCTL, KC_SCLN), KC_ENT,
+
   KC_LSFT, KC_Z,    KC_X,    KC_C,  KC_V,   KC_B,    KC_BSPC,              KC_DEL,         KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
   KC_LCTL, KC_LGUI, KC_LALT, MO(2), MO(1),                                                 MO(1),   MO(2), KC_RALT, KC_LGUI, KC_RCTL,
                                             KC_MPLY, KC_BRIU,              KC_VOLU,        KC_MUTE,
@@ -90,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F1,   KC_F2,         KC_F3,         KC_F4,         KC_F5,        KC_F6,           KC_APP,               KC_NUM,         KC_F7,      KC_F8,         KC_F9,         KC_F10,        KC_F11,     KC_F12,
   KC_ESC,  LSFT(KC_1),    LSFT(KC_2),    LSFT(KC_3),    LSFT(KC_4),   LSFT(KC_5),      MACRO_SWTCH_KB,       MACRO_SWTCH_KB, LSFT(KC_6), LSFT(KC_7),    LSFT(KC_8),    LSFT(KC_9),    LSFT(KC_0), KC_BSPC,
   KC_TAB,  LSFT(KC_MINS), LSFT(KC_BSLS), LSFT(KC_COMM), LSFT(KC_DOT), MACRO_SWTCH_KB,                                        KC_DEL,     LSFT(KC_LBRC), LSFT(KC_RBRC), KC_LBRC,       KC_RBRC,    KC_ENT,
-  KC_LSFT, KC_EQL,        KC_BSLS,       KC_LNG2,       KC_INT2,      MACRO_WORD_BACK, KC_BSPC,              KC_DEL,         KC_NO,      KC_GRV,        LSFT(KC_GRV),  LSFT(KC_QUOT), KC_QUOT,    KC_RSFT,
+   KC_LSFT, KC_EQL,        KC_BSLS,       KC_LNG2,       KC_INT2,      MACRO_WORD_BACK, KC_BSPC,              KC_DEL,         KC_NO,      KC_GRV,        LSFT(KC_GRV),  LSFT(KC_QUOT), KC_QUOT,    KC_RSFT,
   KC_LCTL, KC_LGUI,       KC_LALT,       MO(2),         MO(1),                                                                           MO(1),         MO(2),         KC_RALT,       KC_LGUI,    KC_RCTL,
                                                                       KC_MPLY,         KC_BRIU,              KC_VOLU,        KC_MUTE,
                                                                                        KC_BRID,              KC_VOLD,
@@ -102,11 +110,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  | MENU |           | NumLk|  F7  |  F8  |  F9  |  F10 |  F11 |  F12   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Esc    |  na  |  M2  |  na  | End  |  na  |  M0  |           |  M0  | Home | PgDn | PgUp |  na  |   -  |  BkSp  |
+ * | Esc    |      |  M2  |      | End  |      |  M0  |           |  M0  | Home | PgDn | PgUp |      |   -  |  BkSp  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Tab    |   1  |   2  |   3  |   4  |   5  |------|           |------| Left | Down |  Up  | Right|   +  |  Enter |
  * |--------+------+------+------+------+------| BkSp |           | Del  |------+------+------+------+------+--------|
- * | LShift |   6  |   7  |   8  |   9  |   0  |      |           |      |  na  |  na  |   ,  |   .  |   /  | RShift |
+ * | LShift |   6  |   7  |   8  |   9  |   0  |      |           |      |      |      |   ,  |   .  |   /  | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |LCtrl | LGUI | LAlt | MO(2)| MO(1)|                                       | MO(1)| MO(2)| RAlt | LGUI |  RCtrl |
  *   `----------------------------------'                                       `----------------------------------'
@@ -122,8 +130,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand                                                                     right hand
   KC_F1,   KC_F2,   KC_F3,           KC_F4, KC_F5,  KC_F6,   KC_APP,               KC_NUM,         KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
   KC_ESC,  KC_NO,   MACRO_WORD_FRWD, KC_NO, KC_END, KC_NO,   MACRO_SWTCH_KB,       MACRO_SWTCH_KB, KC_HOME, KC_PGDN, KC_PGUP, KC_NO,   KC_MINS, KC_BSPC,
-  KC_TAB,  KC_1,    KC_2,            KC_3,  KC_4,   KC_5,                                          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PLUS, KC_ENT,
-  KC_LSFT, KC_6,    KC_7,            KC_8,  KC_9,   KC_0,    KC_BSPC,              KC_DEL,         KC_NO,   KC_NO,   KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
+
+  // left home row
+  KC_TAB, MT(MOD_LCTL, KC_1), MT(MOD_LGUI, KC_2), MT(MOD_LALT, KC_3), MT(MOD_LSFT, KC_4), KC_5,
+
+                                                // right home row
+                                                KC_LEFT, MT(MOD_LSFT, KC_DOWN), MT(MOD_LALT, KC_UP), MT(MOD_LGUI, KC_RGHT), MT(MOD_LCTL, KC_PLUS), KC_ENT,
+
+  KC_LSFT, KC_6,    KC_7,            KC_8,  KC_9,   KC_0,    KC_BSPC,              KC_DEL,         KC_NO,   KC_NO,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   KC_LCTL, KC_LGUI, KC_LALT,         MO(2), MO(1),                                                          MO(1),   MO(2),   KC_RALT, KC_LGUI, KC_RCTL,
                                                     KC_MPLY, KC_BRIU,              KC_VOLU,        KC_MUTE,
                                                              KC_BRID,              KC_VOLD,
@@ -135,11 +149,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  | MENU |           | NumLk|  F7  |  F8  |  F9  |  F10 |  F11 |  F12   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Esc    |  na  |  na  |  na  |  na  |  na  |Browse|           | Copy |LWheel|UWheel|DWheel|RWheel|  na  |  BkSp  |
+ * | Esc    |      |      |      |      |      |Browse|           | Copy |LWheel|UWheel|DWheel|RWheel|      |  BkSp  |
  * |--------+------+------+------+------+------| Fwrd |           |      |------+------+------+------+------+--------|
- * | Tab    |  na  |PrtScr|ScrLk |Pause |  na  |------|           |------|LMouse|DMouse|UMouse|RMouse|  na  |  Enter |
+ * | Tab    |      |PrtScr|ScrLk |Pause |      |------|           |------|LMouse|DMouse|UMouse|RMouse|      |  Enter |
  * |--------+------+------+------+------+------|Browse|           | Paste|------+------+------+------+------+--------|
- * | LShift |  na  |  na  |  na  |  na  |  na  | Back |           |      |  na  |  na  |  na  |  na  |  na  | RShift |
+ * | LShift |      |      |      |      |      | Back |           |      |      |      |      |      |      | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |LCtrl | LGUI | LAlt | MO(2)| MO(1)|                                       | MO(1)| MO(2)| RAlt | LGUI |  RCtrl |
  *   `----------------------------------'                                       `----------------------------------'
@@ -161,7 +175,158 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                              KC_BTN1, KC_BTN2,              KC_BTN1, KC_BTN2,
                                                       KC_NO,                KC_NO,
                                       KC_SPC,  MO(2), MO(3),                MO(3),   MO(2),   KC_SPC
-) // LAYER_MOUS end ------------------------------------------------------------------------------------------------ *
+), // LAYER_MOUS end ----------------------------------------------------------------------------------------------- *
+
+/* ################################################## US END ###################################################### */
+
+/* #################################################### JIS ####################################################### */
+
+/* [4] LAYER_BASE_JIS: JIS Basic layer ----------------------------------------------------------------------------- *
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  | MENU |           | NumLk|  F7  |  F8  |  F9  |  F10 |  F11 |  F12   |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * | Esc    |   Q  |   W  |   E  |   R  |   T  |  han |           | han  |   Y  |   U  |   I  |   O  |   P  |  BkSp  |
+ * |--------+------+------+------+------+------|  zen |           | zen  |------+------+------+------+------+--------|
+ * | Tab    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |  Enter |
+ * |--------+------+------+------+------+------| BkSp |           | Del  |------+------+------+------+------+--------|
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |LCtrl | LGUI | LAlt | MO(6)| MO(5)|                                       | MO(5)| MO(6)| RAlt | LGUI |  RCtrl |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        | Play |BritUp|       | VolUp| Mute |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |BritDn|       | VolDn|      |      |
+ *                                 | Space| MO(6)|------|       |------|MO(6) |Space |
+ *                                 |      |      | MO(7)|       | MO(7)|      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[LAYER_BASE_JIS] = LAYOUT_ergodox_pretty(
+  // left hand                                                             right hand
+  KC_F1,   KC_F2,   KC_F3,   KC_F4, KC_F5,  KC_F6,   KC_APP,               KC_NUM,         KC_F7,   KC_F8, KC_F9,   KC_F10,  KC_F11,  KC_F12,
+  KC_ESC,  KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,    KC_GRAVE,             KC_GRAVE,       KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,
+
+  // left hand home row
+  KC_TAB,  MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_D), MT(MOD_LSFT, KC_F),   KC_G,
+
+                                            // right hand home row
+                                            KC_H,    MT(MOD_LSFT, KC_J), MT(MOD_LALT, KC_K), MT(MOD_LGUI, KC_L), MT(MOD_LCTL, KC_SCLN), KC_ENT,
+
+  KC_LSFT, KC_Z,    KC_X,    KC_C,  KC_V,   KC_B,    KC_BSPC,              KC_DEL,         KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
+  KC_LCTL, KC_LGUI, KC_LALT, MO(6), MO(5),                                                 MO(5),   MO(6), KC_RALT, KC_LGUI, KC_RCTL,
+                                            KC_MPLY, KC_BRIU,              KC_VOLU,        KC_MUTE,
+                                                     KC_BRID,              KC_VOLD,
+                                    KC_SPC, MO(6),   MO(7),                MO(7),          MO(6),  KC_SPC
+), // LAYER_BASE_JIS end ------------------------------------------------------------------------------------------- *
+
+/* [5] LAYER_SYMB_JIS: JIS Symbol Layer ---------------------------------------------------------------------------- *
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  | MENU |           | NumLk|  F7  |  F8  |  F9  |  F10 |  F11 |  F12   |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * | Esc    |   !  |   @  |   #  |   $  |   %  |  han |           | han  |   ^  |   &  |   *  |   (  |   )  |  BkSp  |
+ * |--------+------+------+------+------+------|  zen |           | zen  |------+------+------+------+------+--------|
+ * | Tab    |   _  |   |  |   <  |   >  |hanzen|------|           |------|  Del |   {  |   }  |   [  |   ]  |  Enter |
+ * |--------+------+------+------+------+------| BkSp |           | Del  |------+------+------+------+------+--------|
+ * | LShift |   =  |   \  | 英数  | かな | M1  |      |           |      |  na  |   `  |   ~  |   "  |   '  | RShift |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |LCtrl | LGUI | LAlt | MO(6)| MO(5)|                                       | MO(5)| MO(6)| RAlt | LGUI |  RCtrl |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        | Play |BritUp|       | VolUp| Mute |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |BritDn|       | VolDn|      |      |
+ *                                 | Space| MO(6)|------|       |------|MO(6) |Space |
+ *                                 |      |      | MO(7)|       | MO(7)|      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[LAYER_SYMB_JIS] = LAYOUT_ergodox_pretty(
+  // left hand                                                                                               right hand
+  KC_F1,   KC_F2,         KC_F3,         KC_F4,         KC_F5,        KC_F6,           KC_APP,               KC_NUM,         KC_F7,      KC_F8,         KC_F9,         KC_F10,        KC_F11,     KC_F12,
+  KC_ESC,  LSFT(KC_1),    LSFT(KC_2),    LSFT(KC_3),    LSFT(KC_4),   LSFT(KC_5),      KC_GRAVE,             KC_GRAVE, LSFT(KC_6), LSFT(KC_7),    LSFT(KC_8),    LSFT(KC_9),    LSFT(KC_0), KC_BSPC,
+  KC_TAB,  LSFT(KC_MINS), LSFT(KC_BSLS), LSFT(KC_COMM), LSFT(KC_DOT), KC_GRAVE,                                        KC_DEL,     LSFT(KC_LBRC), LSFT(KC_RBRC), KC_LBRC,       KC_RBRC,    KC_ENT,
+  KC_LSFT, KC_EQL,        KC_BSLS,       KC_LNG2,       KC_INT2,      MACRO_WORD_BACK, KC_BSPC,              KC_DEL,         KC_NO,      KC_GRV,        LSFT(KC_GRV),  LSFT(KC_QUOT), KC_QUOT,    KC_RSFT,
+  KC_LCTL, KC_LGUI,       KC_LALT,       MO(6),         MO(5),                                                                           MO(5),         MO(6),         KC_RALT,       KC_LGUI,    KC_RCTL,
+                                                                      KC_MPLY,         KC_BRIU,              KC_VOLU,        KC_MUTE,
+                                                                                       KC_BRID,              KC_VOLD,
+                                                        KC_SPC,       MO(6),           MO(7),                MO(7),          MO(6),      KC_SPC
+), // LAYER_SYMB_JIS end ------------------------------------------------------------------------------------------- *
+
+/* [6] LAYER_NUM_JIS: JIS Number and Navigation Layer -------------------------------------------------------------- *
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  | MENU |           | NumLk|  F7  |  F8  |  F9  |  F10 |  F11 |  F12   |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * | Esc    |      |  M2  |      | End  |      |  M0  |           |  M0  | Home | PgDn | PgUp |      |   -  |  BkSp  |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | Tab    |   1  |   2  |   3  |   4  |   5  |------|           |------| Left | Down |  Up  | Right|   +  |  Enter |
+ * |--------+------+------+------+------+------| BkSp |           | Del  |------+------+------+------+------+--------|
+ * | LShift |   6  |   7  |   8  |   9  |   0  |      |           |      |      |      |   ,  |   .  |   /  | RShift |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |LCtrl | LGUI | LAlt | MO(6)| MO(5)|                                       | MO(5)| MO(6)| RAlt | LGUI |  RCtrl |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        | Play |BritUp|       | VolUp| Mute |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |BritDn|       | VolDn|      |      |
+ *                                 | Space| MO(6)|------|       |------|MO(6) |Space |
+ *                                 |      |      | MO(7)|       | MO(7)|      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[LAYER_NUM_JIS] = LAYOUT_ergodox_pretty(
+  // left hand                                                                     right hand
+  KC_F1,   KC_F2,   KC_F3,           KC_F4, KC_F5,  KC_F6,   KC_APP,               KC_NUM,         KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+  KC_ESC,  KC_NO,   MACRO_WORD_FRWD, KC_NO, KC_END, KC_NO,   MACRO_SWTCH_KB,       MACRO_SWTCH_KB, KC_HOME, KC_PGDN, KC_PGUP, KC_NO,   KC_MINS, KC_BSPC,
+
+  // left home row
+  KC_TAB, MT(MOD_LCTL, KC_1), MT(MOD_LGUI, KC_2), MT(MOD_LALT, KC_3), MT(MOD_LSFT, KC_4), KC_5,
+
+                                                // right home row
+                                                KC_LEFT, MT(MOD_LSFT, KC_DOWN), MT(MOD_LALT, KC_UP), MT(MOD_LGUI, KC_RGHT), MT(MOD_LCTL, KC_PLUS), KC_ENT,
+
+  KC_LSFT, KC_6,    KC_7,            KC_8,  KC_9,   KC_0,    KC_BSPC,              KC_DEL,         KC_NO,   KC_NO,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+  KC_LCTL, KC_LGUI, KC_LALT,         MO(6), MO(5),                                                          MO(5),   MO(6),   KC_RALT, KC_LGUI, KC_RCTL,
+                                                    KC_MPLY, KC_BRIU,              KC_VOLU,        KC_MUTE,
+                                                             KC_BRID,              KC_VOLD,
+                                            KC_SPC, MO(6),   MO(7),                MO(7),          MO(6),   KC_SPC
+), // LAYER_NUM_JIS end -------------------------------------------------------------------------------------------- *
+
+/* [7] LAYER_MOUS_JIS: Mouse and Less Used Keys Layer -------------------------------------------------------------- *
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  | MENU |           | NumLk|  F7  |  F8  |  F9  |  F10 |  F11 |  F12   |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * | Esc    |      |      |      |      |      |Browse|           | Copy |LWheel|UWheel|DWheel|RWheel|      |  BkSp  |
+ * |--------+------+------+------+------+------| Fwrd |           |      |------+------+------+------+------+--------|
+ * | Tab    |      |PrtScr|ScrLk |Pause |      |------|           |------|LMouse|DMouse|UMouse|RMouse|      |  Enter |
+ * |--------+------+------+------+------+------|Browse|           | Paste|------+------+------+------+------+--------|
+ * | LShift |      |      |      |      |      | Back |           |      |      |      |      |      |      | RShift |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |LCtrl | LGUI | LAlt | MO(6)| MO(5)|                                       | MO(5)| MO(6)| RAlt | LGUI |  RCtrl |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |LClick|RClick|       |LClick|RClick|
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |  na  |       |  na  |      |      |
+ *                                 | Space| MO(6)|------|       |------|MO(6) |Space |
+ *                                 |      |      | MO(7)|       | MO(7)|      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[LAYER_MOUS] = LAYOUT_ergodox_pretty(
+  // left hand                                                              right hand
+  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6, KC_APP,               KC_NUM,  KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, KC_F12,
+  KC_ESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_WFWD,              KC_COPY, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R, KC_NO,  KC_BSPC,
+  KC_TAB,  KC_NO,   KC_PSCR, KC_SCRL, KC_PAUS, KC_NO,                                KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO,  KC_ENT,
+  KC_LSFT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_WBAK,              KC_PSTE, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_RSFT,
+  KC_LCTL, KC_LGUI, KC_LALT, MO(6),   MO(5),                                                  MO(5),   MO(6),   KC_RALT, KC_LGUI, KC_RCTL,
+                                             KC_BTN1, KC_BTN2,              KC_BTN1, KC_BTN2,
+                                                      KC_NO,                KC_NO,
+                                      KC_SPC,  MO(6), MO(7),                MO(7),   MO(6),   KC_SPC
+) // LAYER_MOUS_JIS end ------------------------------------------------------------------------------------------------ *
+
+/* ################################################## JIS END ##################################################### */
+
 };
 // clang-format on
 
@@ -197,6 +362,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case MACRO_WORD_BACK:
                 SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_RCTL) SS_TAP(X_LEFT) SS_UP(X_LCTL) SS_UP(X_RCTL));
                 break;
+
         }
     }
     return true;
