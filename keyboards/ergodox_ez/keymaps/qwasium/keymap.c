@@ -14,10 +14,16 @@
 #include "version.h"
 
 enum layers {
+    // US
     LAYER_BASE, // LAYER 0: default layer
     LAYER_SYMB, // LAYER 1: symbols
     LAYER_NUM,  // LAYER 2: numbers and navigation
     LAYER_MOUS, // LAYER 3: mouse and less used keys
+    // JIS
+    LAYER_BASE_JIS,
+    LAYER_SYMB_JIS,
+    LAYER_NUM_JIS,
+    LAYER_MOUS_JIS,
 };
 
 // Must come before keymaps array and process_record_user()
@@ -58,13 +64,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand                                                             right hand
   KC_F1,   KC_F2,   KC_F3,   KC_F4, KC_F5,  KC_F6,   KC_APP,               KC_NUM,         KC_F7,   KC_F8, KC_F9,   KC_F10,  KC_F11,  KC_F12,
   KC_ESC,  KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,    MACRO_SWTCH_KB,       MACRO_SWTCH_KB, KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,
-
-  // left hand home row
-  KC_TAB,  MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_D), MT(MOD_LSFT, KC_F),   KC_G,
-
-                                            // right hand home row
-                                            KC_H,    MT(MOD_LSFT, KC_J), MT(MOD_LALT, KC_K), MT(MOD_LGUI, KC_L), MT(MOD_LCTL, KC_SCLN), KC_ENT,
-
+  KC_TAB,  MT(MOD_LCTL, KC_A), // left hand home row
+                    MT(MOD_LGUI, KC_S),
+                             MT(MOD_LALT, KC_D),
+                                    MT(MOD_LSFT, KC_F),                                    // right hand home row
+                                            KC_G,                                          KC_H,    MT(MOD_LSFT, KC_J),
+                                                                                                           MT(MOD_LALT, KC_K),
+                                                                                                                    MT(MOD_LGUI, KC_L),
+                                                                                                                             MT(MOD_LCTL, KC_SCLN),
+                                                                                                                                       KC_ENT,
   KC_LSFT, KC_Z,    KC_X,    KC_C,  KC_V,   KC_B,    KC_BSPC,              KC_DEL,         KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
   KC_LCTL, KC_LGUI, KC_LALT, MO(2), MO(1),                                                 MO(1),   MO(2), KC_RALT, KC_LGUI, KC_RCTL,
                                             KC_MPLY, KC_BRIU,              KC_VOLU,        KC_MUTE,
@@ -130,13 +138,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand                                                                     right hand
   KC_F1,   KC_F2,   KC_F3,           KC_F4, KC_F5,  KC_F6,   KC_APP,               KC_NUM,         KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
   KC_ESC,  KC_NO,   MACRO_WORD_FRWD, KC_NO, KC_END, KC_NO,   MACRO_SWTCH_KB,       MACRO_SWTCH_KB, KC_HOME, KC_PGDN, KC_PGUP, KC_NO,   KC_MINS, KC_BSPC,
-
-  // left home row
-  KC_TAB, MT(MOD_LCTL, KC_1), MT(MOD_LGUI, KC_2), MT(MOD_LALT, KC_3), MT(MOD_LSFT, KC_4), KC_5,
-
-                                                // right home row
-                                                KC_LEFT, MT(MOD_LSFT, KC_DOWN), MT(MOD_LALT, KC_UP), MT(MOD_LGUI, KC_RGHT), MT(MOD_LCTL, KC_PLUS), KC_ENT,
-
+  KC_TAB, MT(MOD_LCTL, KC_1), // left home row
+                    MT(MOD_LGUI, KC_2),
+                                     MT(MOD_LALT, KC_3),
+                                            MT(MOD_LSFT, KC_4),                                    // right home row
+                                                    KC_5,                                          KC_LEFT, MT(MOD_LSFT, KC_DOWN),
+                                                                                                                    MT(MOD_LALT, KC_UP),
+                                                                                                                              MT(MOD_LGUI, KC_RGHT),
+                                                                                                                                       MT(MOD_LCTL, KC_PLUS),
+                                                                                                                                                KC_ENT,
   KC_LSFT, KC_6,    KC_7,            KC_8,  KC_9,   KC_0,    KC_BSPC,              KC_DEL,         KC_NO,   KC_NO,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   KC_LCTL, KC_LGUI, KC_LALT,         MO(2), MO(1),                                                          MO(1),   MO(2),   KC_RALT, KC_LGUI, KC_RCTL,
                                                     KC_MPLY, KC_BRIU,              KC_VOLU,        KC_MUTE,
@@ -206,13 +216,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand                                                             right hand
   KC_F1,   KC_F2,   KC_F3,   KC_F4, KC_F5,  KC_F6,   KC_APP,               KC_NUM,         KC_F7,   KC_F8, KC_F9,   KC_F10,  KC_F11,  KC_F12,
   KC_ESC,  KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,    KC_GRAVE,             KC_GRAVE,       KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,
-
-  // left hand home row
-  KC_TAB,  MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_D), MT(MOD_LSFT, KC_F),   KC_G,
-
-                                            // right hand home row
-                                            KC_H,    MT(MOD_LSFT, KC_J), MT(MOD_LALT, KC_K), MT(MOD_LGUI, KC_L), MT(MOD_LCTL, KC_SCLN), KC_ENT,
-
+  KC_TAB,  MT(MOD_LCTL, KC_A), // left hand home row
+                    MT(MOD_LGUI, KC_S),
+                             MT(MOD_LALT, KC_D),
+                                    MT(MOD_LSFT, KC_F),                                    // right hand home row
+                                            KC_G,                                          KC_H,    MT(MOD_LSFT, KC_J),
+                                                                                                           MT(MOD_LALT, KC_K),
+                                                                                                                    MT(MOD_LGUI, KC_L),
+                                                                                                                             MT(MOD_LCTL, KC_SCLN),
+                                                                                                                                       KC_ENT,
   KC_LSFT, KC_Z,    KC_X,    KC_C,  KC_V,   KC_B,    KC_BSPC,              KC_DEL,         KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
   KC_LCTL, KC_LGUI, KC_LALT, MO(6), MO(5),                                                 MO(5),   MO(6), KC_RALT, KC_LGUI, KC_RCTL,
                                             KC_MPLY, KC_BRIU,              KC_VOLU,        KC_MUTE,
@@ -278,13 +290,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand                                                                     right hand
   KC_F1,   KC_F2,   KC_F3,           KC_F4, KC_F5,  KC_F6,   KC_APP,               KC_NUM,         KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
   KC_ESC,  KC_NO,   MACRO_WORD_FRWD, KC_NO, KC_END, KC_NO,   MACRO_SWTCH_KB,       MACRO_SWTCH_KB, KC_HOME, KC_PGDN, KC_PGUP, KC_NO,   KC_MINS, KC_BSPC,
-
-  // left home row
-  KC_TAB, MT(MOD_LCTL, KC_1), MT(MOD_LGUI, KC_2), MT(MOD_LALT, KC_3), MT(MOD_LSFT, KC_4), KC_5,
-
-                                                // right home row
-                                                KC_LEFT, MT(MOD_LSFT, KC_DOWN), MT(MOD_LALT, KC_UP), MT(MOD_LGUI, KC_RGHT), MT(MOD_LCTL, KC_PLUS), KC_ENT,
-
+  KC_TAB, MT(MOD_LCTL, KC_1), // left home row
+                    MT(MOD_LGUI, KC_2),
+                                     MT(MOD_LALT, KC_3),
+                                            MT(MOD_LSFT, KC_4),                                    // right home row
+                                                    KC_5,                                          KC_LEFT, MT(MOD_LSFT, KC_DOWN),
+                                                                                                                    MT(MOD_LALT, KC_UP),
+                                                                                                                              MT(MOD_LGUI, KC_RGHT),
+                                                                                                                                       MT(MOD_LCTL, KC_PLUS),
+                                                                                                                                                KC_ENT,
   KC_LSFT, KC_6,    KC_7,            KC_8,  KC_9,   KC_0,    KC_BSPC,              KC_DEL,         KC_NO,   KC_NO,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   KC_LCTL, KC_LGUI, KC_LALT,         MO(6), MO(5),                                                          MO(5),   MO(6),   KC_RALT, KC_LGUI, KC_RCTL,
                                                     KC_MPLY, KC_BRIU,              KC_VOLU,        KC_MUTE,
@@ -313,7 +327,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      | MO(7)|       | MO(7)|      |      |
  *                                 `--------------------'       `--------------------'
  */
-[LAYER_MOUS] = LAYOUT_ergodox_pretty(
+[LAYER_MOUS_JIS] = LAYOUT_ergodox_pretty(
   // left hand                                                              right hand
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6, KC_APP,               KC_NUM,  KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, KC_F12,
   KC_ESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_WFWD,              KC_COPY, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R, KC_NO,  KC_BSPC,
@@ -367,6 +381,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+
+// combos add `COMBO_ENABLE=yes` in `rules.mk`
+const uint16_t PROGMEM us_jis_combo[] = {MO(1), MO(2), MO(3), COMBO_END}; // us -> jis
+const uint16_t PROGMEM jis_us_combo[] = {MO(5), MO(6), MO(7), COMBO_END}; // jis -> us
+combo_t key_combos[] = {
+    COMBO(us_jis_combo, TG(4)), // switch keyboard layout: US -> JIS
+    COMBO(jis_us_combo, TG(0)), // switch keyboard layout: JIS -> US
+
+};
 
 // Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {
