@@ -29,6 +29,8 @@ enum layers {
 // Must come before keymaps array and process_record_user()
 enum custom_keycodes {
     VRSN = SAFE_RANGE,
+    MACRO_US_JIS,    // US -> JIS keymap switch (not mapped in layer)
+    MACRO_JIS_US,    // JIS -> US keymap switch (unmapped in layer)
     MACRO_SWTCH_KB,  // MACRO 0: switch keyboard with super+space and set to kana if changed to Japanese Keyboard
     MACRO_WORD_FRWD, // MACRO 1: move one word forward (vim keybind style)
     MACRO_WORD_BACK, // MACRO 2: move one word backward (vim keybind style)
@@ -145,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_5,                                          KC_LEFT, MT(MOD_LSFT, KC_DOWN),
                                                                                                                     MT(MOD_LALT, KC_UP),
                                                                                                                               MT(MOD_LGUI, KC_RGHT),
-                                                                                                                                       MT(MOD_LCTL, KC_PLUS),
+                                                                                                                                       MT(MOD_LCTL, KC_PPLS),
                                                                                                                                                 KC_ENT,
   KC_LSFT, KC_6,    KC_7,            KC_8,  KC_9,   KC_0,    KC_BSPC,              KC_DEL,         KC_NO,   KC_NO,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   KC_LCTL, KC_LGUI, KC_LALT,         MO(2), MO(1),                                                          MO(1),   MO(2),   KC_RALT, KC_LGUI, KC_RCTL,
@@ -297,7 +299,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_5,                                          KC_LEFT, MT(MOD_LSFT, KC_DOWN),
                                                                                                                     MT(MOD_LALT, KC_UP),
                                                                                                                               MT(MOD_LGUI, KC_RGHT),
-                                                                                                                                       MT(MOD_LCTL, KC_PLUS),
+                                                                                                                                       MT(MOD_LCTL, KC_PPLS),
                                                                                                                                                 KC_ENT,
   KC_LSFT, KC_6,    KC_7,            KC_8,  KC_9,   KC_0,    KC_BSPC,              KC_DEL,         KC_NO,   KC_NO,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   KC_LCTL, KC_LGUI, KC_LALT,         MO(6), MO(5),                                                          MO(5),   MO(6),   KC_RALT, KC_LGUI, KC_RCTL,
