@@ -36,12 +36,20 @@ enum layers {
 
 // Must come before keymaps array and process_record_user()
 enum custom_keycodes {
-    // VRSN = SAFE_RANGE,
     MACRO_SWTCH_KB,  // MACRO 0: switch keyboard with super+space and set to kana if changed to Japanese Keyboard
     MACRO_WORD_FRWD, // MACRO 1: move one word forward (vim keybind style)
     MACRO_WORD_BACK, // MACRO 2: move one word backward (vim keybind style)
 };
 
+// Tap dance; sinde MT(mod, LSFT(kc)) is not supported.
+enum {
+    CTL_UNDR, // CTL_T( _ )
+    GUI_PIPE, // GUI_T( | )
+    ALT_LESS, // ALT_T( < )
+    SFT_MORE, // SFT_T( > )
+    SFT_LCUR, // SFT_T( { )
+    ALT_RCUR, // ALT_T( } )
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -57,10 +65,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [LAYER_BASE] = LAYOUT_planck_mit(
-    KC_ESC,  KC_Q,               KC_W,               KC_E,               KC_R,               KC_T, KC_Y, KC_U,               KC_I,               KC_O,               KC_P,                  KC_BSPC,
-    KC_TAB,  MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_D), MT(MOD_LSFT, KC_F), KC_G, KC_H, MT(MOD_LSFT, KC_J), MT(MOD_LALT, KC_K), MT(MOD_LGUI, KC_L), MT(MOD_LCTL, KC_SCLN), KC_ENT,
-    KC_LSFT, KC_Z,               KC_X,               KC_C,               KC_V,               KC_B, KC_N, KC_M,               KC_COMM,            KC_DOT,             KC_SLSH,               KC_RSFT,
-    KC_LCTL, KC_LGUI,            KC_LALT,            MO(2),              MO(1),                KC_SPC,   MO(1),              MO(2),              KC_RALT,            KC_LGUI,               KC_RCTL
+    KC_ESC,  KC_Q,        KC_W,        KC_E,        KC_R,        KC_T, KC_Y, KC_U,        KC_I,        KC_O,        KC_P,           KC_BSPC,
+    KC_TAB,  CTL_T(KC_A), GUI_T(KC_S), ALT_T(KC_D), SFT_T(KC_F), KC_G, KC_H, SFT_T(KC_J), ALT_T(KC_K), GUI_T(KC_L), CTL_T(KC_SCLN), KC_ENT,
+    KC_LSFT, KC_Z,        KC_X,        KC_C,        KC_V,        KC_B, KC_N, KC_M,        KC_COMM,     KC_DOT,      KC_SLSH,        KC_RSFT,
+    KC_LCTL, KC_LGUI,     KC_LALT,     MO(2),       MO(1),         KC_SPC,   MO(1),       MO(2),       KC_RALT,     KC_LGUI,        KC_RCTL
 ),
 
 /* Symbols
@@ -69,31 +77,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |  _   |  |   |  <   |  >   | M(0) |  Del |   {  |   }  |   [  |   ]  |EnTer |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |LShift|  =   |  \   | 英数 | かな | M(1) |      |   `` |   ~  |   ,  |   .  |RShift|
+ * |LShift|  =   |  \   | 英数 | かな | M(1) |      |   `` |   ~  |   "  |   '  |RShift|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | LCtrl| LGUI | LAlt | MO(2)| MO(1)|    Space    |MO(1) |MO(2) | RAlt | RGUI |RCtrl |
  * `-----------------------------------------------------------------------------------'
  */
 [LAYER_SYMB] = LAYOUT_planck_mit(
-    KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,         KC_CIRC, KC_AMPR, KC_ASTR,     KC_LPRN,        KC_RPRN, KC_BSPC,
-    KC_TAB,  MT(MOD_LCTL, LSFT(KC_MINS)),
-                      MT(MOD_LGUI, LSFT(KC_BSLS)),
-                               MT(MOD_LALT, LSFT(KC_COMM)),
-                                        MT(MOD_LSFT, LSFT(KC_DOT)),
-                                                 MACRO_SWTCH_KB,  KC_DEL,  MT(MOD_LSFT, LSFT(KC_LBRC)),
-                                                                                    MT(MOD_LALT, LSFT(KC_RBRC)),
-                                                                                                  MT(MOD_LGUI, KC_LBRC),
-                                                                                                                 MT(MOD_LCTL, KC_RBRC),
-                                                                                                                          KC_ENT,
-    KC_LSFT, KC_EQL,  KC_BSLS, KC_LNG2, KC_INT2, MACRO_WORD_BACK, KC_NO,   KC_GRV,  LSFT(KC_GRV), LSFT(KC_QUOT), KC_QUOT, KC_RSFT,
-    KC_LCTL, KC_LGUI, KC_LALT, MO(2),   MO(1),             KC_SPC,         MO(1),   MO(2),        KC_RALT,       KC_LGUI, KC_RCTL
+    KC_ESC,  KC_EXLM,      KC_AT,        KC_HASH,      KC_DLR,       KC_PERC,         KC_CIRC, KC_AMPR,      KC_ASTR,      KC_LPRN,        KC_RPRN,        KC_BSPC,
+    KC_TAB,  TD(CTL_UNDR), TD(GUI_PIPE), TD(ALT_LESS), TD(SFT_MORE), MACRO_SWTCH_KB,  KC_DEL,  TD(SFT_LCUR), TD(ALT_RCUR), GUI_T(KC_LBRC), CTL_T(KC_RBRC), KC_ENT,
+    KC_LSFT, KC_EQL,       KC_BSLS,      KC_LNG2,      KC_INT2,      MACRO_WORD_BACK, KC_NO,   KC_GRV,       S(KC_GRV),    S(KC_QUOT),     KC_QUOT,        KC_RSFT,
+    KC_LCTL, KC_LGUI,      KC_LALT,      MO(2),        MO(1),                KC_SPC,           MO(1),        MO(2),        KC_RALT,        KC_LGUI,        KC_RCTL
 ),
 
 /* Number/Arrows
  * ,-----------------------------------------------------------------------------------.
  * | Esc  |      | M(2) |      | End  |      | Home |      |      |      |   -  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |  1   |  2   |  3   |  4   |  5   | Left | Down |  Up  | Right|   +  |  Esc |
+ * |CapsLk|  1   |  2   |  3   |  4   |  5   | Left | Down |  Up  | Right|   +  |  Esc |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |LShift|  6   |  7   |  8   |  9   |  0   |      |      |   ,  |   .  |   /  |RShift|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -101,10 +101,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [LAYER_NUM] = LAYOUT_planck_mit(
-    KC_ESC,  KC_NO,              MACRO_WORD_FRWD,    KC_NO,              KC_END,             KC_NO, KC_HOME, KC_NO,                 KC_NO,               KC_NO,                 KC_MINS,               KC_BSPC,
-    KC_TAB,  MT(MOD_LCTL, KC_1), MT(MOD_LGUI, KC_2), MT(MOD_LALT, KC_3), MT(MOD_LSFT, KC_4), KC_5,  KC_LEFT, MT(MOD_LSFT, KC_DOWN), MT(MOD_LALT, KC_UP), MT(MOD_LGUI, KC_RGHT), MT(MOD_LCTL, KC_PPLS), KC_ENT,
-    KC_LSFT, KC_6,               KC_7,               KC_8,               KC_9,               KC_0,  KC_NO,   KC_NO,                 KC_COMM,             KC_DOT,                KC_SLSH,               KC_RSFT,
-    KC_LCTL, KC_LGUI,            KC_LALT,            MO(2),              MO(1),                KC_SPC,       MO(1),                 MO(2),               KC_RALT,               KC_LGUI,               KC_RCTL
+    KC_ESC,  KC_NO,       MACRO_WORD_FRWD, KC_NO,       KC_END,      KC_NO, KC_HOME, KC_NO,          KC_NO,        KC_NO,          KC_MINS,        KC_BSPC,
+    KC_CAPS, CTL_T(KC_1), GUI_T(KC_2),     ALT_T(KC_3), SFT_T(KC_4), KC_5,  KC_LEFT, SFT_T(KC_DOWN), ALT_T(KC_UP), GUI_T(KC_RGHT), CTL_T(KC_PPLS), KC_ENT,
+    KC_LSFT, KC_6,        KC_7,            KC_8,        KC_9,        KC_0,  KC_NO,   KC_NO,          KC_COMM,      KC_DOT,         KC_SLSH,        KC_RSFT,
+    KC_LCTL, KC_LGUI,     KC_LALT,         MO(2),       MO(1),          KC_SPC,      MO(1),          MO(2),        KC_RALT,        KC_LGUI,        KC_RCTL
 ),
 
 /* Mouse/Function
@@ -127,47 +127,108 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-
-// Runs whenever a key is pressed or released.
-// Define macro (see: qmk_firmware/docs/feature_macros.md)
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) { // When keycode is pressed
-        switch (keycode) {
-
-            // // Defined in default keymap
-            // case VRSN:
-            //     SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-            //     return false;
-
-            // MACRO 0
-            // Switch keyboard with super+space and then set to kana
-            // Tapping kana is affected in JP Keyboard input, ignored in other languages
-            case MACRO_SWTCH_KB:
-                SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_SPC) SS_UP(X_LGUI) SS_UP(X_SPC) SS_TAP(X_INT2) SS_TAP(X_INT2));
-                break;
-
-            // MACRO 1
-            // Move one word forward (vim keybind style)
-            // In macos, it will act as END key
-            case MACRO_WORD_FRWD:
-                SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_RCTL) SS_TAP(X_RGHT) SS_UP(X_LCTL) SS_UP(X_RCTL));
-                break;
-
-            // MACRO 2
-            // Move one word backward (vim keybind style)
-            // In macos, it will act as HOME key
-            case MACRO_WORD_BACK:
-                SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_RCTL) SS_TAP(X_LEFT) SS_UP(X_LCTL) SS_UP(X_RCTL));
-                break;
-
-        }
-    }
-    return true;
-}
-
 // MO(3)
 const uint16_t PROGMEM mo3_combo[] = {MO(1), MO(2), COMBO_END};
 combo_t key_combos[] = {
     COMBO(mo3_combo, MO(3))
 };
 
+// Tap Dance definitions
+typedef struct {
+    uint16_t tap;
+    uint16_t hold;
+    uint16_t held;
+} tap_dance_tap_hold_t;
+
+void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data) {
+    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
+
+    if (state->pressed) {
+        if (state->count == 1
+#ifndef PERMISSIVE_HOLD
+            && !state->interrupted
+#endif
+        ) {
+            register_code16(tap_hold->hold);
+            tap_hold->held = tap_hold->hold;
+        } else {
+            register_code16(tap_hold->tap);
+            tap_hold->held = tap_hold->tap;
+        }
+    }
+}
+
+void tap_dance_tap_hold_reset(tap_dance_state_t *state, void *user_data) {
+    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
+
+    if (tap_hold->held) {
+        unregister_code16(tap_hold->held);
+        tap_hold->held = 0;
+    }
+}
+
+#define ACTION_TAP_DANCE_TAP_HOLD(tap, hold)                                        \
+    {                                                                               \
+        .fn        = {NULL, tap_dance_tap_hold_finished, tap_dance_tap_hold_reset}, \
+        .user_data = (void *)&((tap_dance_tap_hold_t){tap, hold, 0}),               \
+    }
+
+tap_dance_action_t tap_dance_actions[] = {
+    [CTL_UNDR] = ACTION_TAP_DANCE_TAP_HOLD(S(KC_MINS), KC_LCTL),
+    [GUI_PIPE] = ACTION_TAP_DANCE_TAP_HOLD(S(KC_BSLS), KC_LGUI),
+    [ALT_LESS] = ACTION_TAP_DANCE_TAP_HOLD(S(KC_COMM), KC_LALT),
+    [SFT_MORE] = ACTION_TAP_DANCE_TAP_HOLD(S(KC_DOT), KC_LSFT),
+    [SFT_LCUR] = ACTION_TAP_DANCE_TAP_HOLD(S(KC_LBRC), KC_LSFT),
+    [ALT_RCUR] = ACTION_TAP_DANCE_TAP_HOLD(S(KC_RBRC), KC_LALT),
+};
+
+// Runs whenever a key is pressed or released.
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    tap_dance_action_t *action;
+
+    switch (keycode) {
+
+        // TAP DANCE
+        // list all tap dance keycodes with tap-hold configurations
+        case TD(CTL_UNDR):
+        case TD(GUI_PIPE):
+        case TD(ALT_LESS):
+        case TD(SFT_MORE):
+        case TD(SFT_LCUR):
+        case TD(ALT_RCUR):
+            action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
+            if (!record->event.pressed && action->state.count && !action->state.finished) {
+                tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data;
+                tap_code16(tap_hold->tap);
+            }
+            return true;
+
+        // MACRO 0
+        // Switch keyboard with super+space and then set to kana
+        // Tapping kana is affected in JP Keyboard input, ignored in other languages
+        case MACRO_SWTCH_KB:
+            if (record->event.pressed) { // When keycode is pressed
+                SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_SPC) SS_UP(X_LGUI) SS_UP(X_SPC) SS_TAP(X_INT2) SS_TAP(X_INT2));
+                break;
+            }
+
+        // MACRO 1
+        // Move one word forward (vim keybind style)
+        // In macos, it will act as END key
+        case MACRO_WORD_FRWD:
+            if (record->event.pressed) { // When keycode is pressed
+                SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_RCTL) SS_TAP(X_RGHT) SS_UP(X_LCTL) SS_UP(X_RCTL));
+                break;
+            }
+
+        // MACRO 2
+        // Move one word backward (vim keybind style)
+        // In macos, it will act as HOME key
+        case MACRO_WORD_BACK:
+            if (record->event.pressed) { // When keycode is pressed
+                SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_RCTL) SS_TAP(X_LEFT) SS_UP(X_LCTL) SS_UP(X_RCTL));
+                break;
+            }
+    }
+    return true;
+}
